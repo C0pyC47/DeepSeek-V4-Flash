@@ -1,0 +1,16 @@
+services:
+  ds4:
+    build: ./ds4
+    restart: unless-stopped
+    gpus: all
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./gguf:/gguf:ro
+    environment:
+      - DS4_CONT_MTP_MODE=2
+      - DS4_CONT_DSPARK=1
+      - DS4_DSPARK_MODEL=/gguf/${DSPARK_FILE}
+    command: >
+      -m /gguf/${GGUF_FILE}
+      -c 262144
