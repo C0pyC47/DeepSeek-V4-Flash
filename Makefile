@@ -12,10 +12,12 @@ setup:
 	docker compose build
 	hf download $(GGUF_REPO) $(GGUF_FILE) --local-dir ./gguf
 	hf download $(DSPARK_REPO) $(DSPARK_FILE) --local-dir ./gguf
+	printf 'GGUF_FILE=%s\nDSPARK_FILE=%s\n' '$(GGUF_FILE)' '$(DSPARK_FILE)' > .env
 
 serve:
-	GGUF_FILE=$(GGUF_FILE) DSPARK_FILE=$(DSPARK_FILE) docker compose up -d
+	docker compose up -d
 
 clean:
 	docker compose down --rmi local
 	rm -rf ./gguf
+	rm -f .env
