@@ -4,7 +4,7 @@ GGUF_FILE = DeepSeek-V4-Flash-IQ2XXS-w2Q2K-AProjQ8-SExpQ8-OutQ8-chat-v2-imatrix-
 DSPARK_REPO = bleysg/DeepSeek-V4-Flash-DSpark-drafter-GGUF
 DSPARK_FILE = DSpark-drafter-Q2K-Q8-0731.gguf
 
-.PHONY: all setup serve
+.PHONY: all setup serve clean
 
 all: setup serve
 
@@ -15,3 +15,7 @@ setup:
 
 serve:
 	GGUF_FILE=$(GGUF_FILE) DSPARK_FILE=$(DSPARK_FILE) docker compose up -d
+
+clean:
+	docker compose down --rmi local
+	rm -rf ./gguf
