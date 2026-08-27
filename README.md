@@ -6,7 +6,7 @@ Docker container for serving **DeepSeek-V4-Flash-0731** on a single **NVIDIA DGX
 
 * NVIDIA DGX Spark
 * Hugging Face Hub CLI
-* Docker
+* Docker with NVIDIA Container Toolkit
 
 ## Usage
 
@@ -14,6 +14,10 @@ Docker container for serving **DeepSeek-V4-Flash-0731** on a single **NVIDIA DGX
 git clone https://github.com/C0pyC47/DeepSeek-V4-Flash.git
 cd DeepSeek-V4-Flash && make
 ```
+
+## Endpoint
+
+OpenAI-compatible API on `http://<spark-host>:8000`.
 
 ## Credits
 

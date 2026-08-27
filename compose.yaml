@@ -13,4 +13,4 @@ services:
       - DS4_DSPARK_MODEL=/gguf/${DSPARK_FILE}
     command: >
       -m /gguf/${GGUF_FILE}
-      -c 262144
+      -c ${CTX_SIZE}
